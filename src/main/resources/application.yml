@@ -1,0 +1,50 @@
+server:
+  port: 9797
+  max-http-request-header-size: 756000
+  tomcat:
+    connection-timeout: 10000
+    threads:
+      min-spare: 100
+      max: 3000
+    accesslog:
+      enabled: true
+      encoding: UTF-8
+  servlet:
+    encoding:
+      charset:
+      force: true
+
+spring:
+  application:
+    name: bear-client-demo
+  restTemplate:
+    connectionPerRoute: 300
+    maxTotalConnection: 3000
+    connectTimeout: 10000
+    readTimeout: 30000
+
+
+service:
+  api:
+    base-path: /services/${sping.application.name}
+  swagger:
+    title: 'bear service client'
+    description: 'bear service client demo'
+    version: 'version1.0.0-1402/01/01'
+
+springdoc:
+  swagger-ui:
+    path: /swagger-ui.html
+    display-request-duration: true
+    display-operation-id: true
+
+  api-docs:
+    path: /swagger/v3/api-docs
+
+
+
+management:
+  endpoints:
+    web:
+      exposure:
+        include: '*'
